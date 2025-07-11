@@ -1,0 +1,8 @@
+### Create a new to-do
+POST http://localhost:3000/todos
+Content-Type: application/json
+
+{
+  "text": "Increase the number of tools in my tool belt",
+  "done": false
+}

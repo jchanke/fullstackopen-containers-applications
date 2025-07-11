@@ -1,0 +1,19 @@
+Script started on 2025-07-10 16:09:50-04:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="171" LINES="13"]
+joey:~/fullstackopen/part12/containers-applications$ docker start -i cfb8
+
+root@cfb82c:/# curl -sL https://deb.nodesource.com/setup_20.x | bash
+apt install -y nodejs
+
+<-- a whole bunch of installation scripts -->
+
+100% [Working]
+
+root@cfb82c:/# node /usr/src/app/index.js
+
+Hello World
+
+root@cfb82c:/# exit
+
+joey:~/fullstackopen/part12/containers-applications$ exit
+
+Script done on 2025-07-10 16:10:44-04:00 [COMMAND_EXIT_CODE="0"]

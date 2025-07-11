@@ -59,3 +59,8 @@ typings/
 
 # next.js build output
 .next
+
+# MongoDB, Redis data
+mongo_data
+redis_data/
+

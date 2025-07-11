@@ -1,0 +1,8 @@
+### Update a to-do
+PUT http://localhost:3000/todos/6870333cc4f070012abaa8b9
+Content-Type: application/json
+
+{
+  "text": "Write code",
+  "done": true
+}

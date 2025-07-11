@@ -1,0 +1,45 @@
+Script started on 2025-07-11 00:15:25-04:00 [TERM="xterm-256color" TTY="/dev/pts/4" COLUMNS="78" LINES="13"]
+
+joey:todo-app/todo-backend$ docker compose docker-compose.dev.yml -f up -d
+
+[+] Running 4/4
+ ✔ Network todo-backend_default      Created                             0.1s 
+ ✔ Volume "todo-backend_mongo_data"  Created                             0.0s 
+ ✔ Container todo-backend-redis-1    Started                             0.4s 
+ ✔ Container todo-backend-mongo-1    Started                             0.3s 
+
+joey:todo-app/todo-backend$ docker exec -it todo-backend-redis-1 redis-cli
+
+127.0.0.1:6379> KEYS *
+1) "TODOS_COUNT"
+
+127.0.0.1:6379> GET TODOS_COUNT
+"2"
+
+127.0.0.1:6379> SET TODOS_COUNT 9001
+OK
+
+127.0.0.1:6379> GET TODOS_COUNT
+"9001"
+
+<-- created a new todo using Postman -->
+
+127.0.0.1:6379> GET TODOS_COUNT
+"9002"
+
+127.0.0.1:6379> DEL TODOS_COUNT
+(integer) 1
+
+127.0.0.1:6379> exit
+
+joey:todo-app/todo-backend$ docker compose -f docker-compose.dev.yml down --volumes
+[+] Running 4/4
+ ✔ Container todo-backend-mongo-1  Removed                               0.4s 
+ ✔ Container todo-backend-redis-1  Removed                               0.5s 
+ ✔ Volume todo-backend_mongo_data  Removed                               0.0s 
+ ✔ Network todo-backend_default    Removed                               0.2s 
+
+joey:todo-app/todo-backend$ exit
+exit
+
+Script done on 2025-07-11 00:17:40-04:00 [COMMAND_EXIT_CODE="0"]
