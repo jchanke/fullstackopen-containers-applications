@@ -4,10 +4,10 @@ WORKDIR /usr/src/app
 
 COPY --chown=node:node . .
 
-RUN npm ci --omit=dev
+RUN npm install
 
-ENV NODE_ENV=production
+ENV NODE_ENV=development
 
 USER node
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "dev"]
