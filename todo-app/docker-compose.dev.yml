@@ -3,11 +3,11 @@ services:
     image: todo-front-dev
     build:
       context: ./todo-frontend/
-      dockerfile: ./dev.Dockerfile
+      dockerfile: ./dev.Dockerfile # in todo-frontend/
     volumes:
       - ./todo-frontend/:/usr/src/app
-    ports:
-      - 5173:5173
+    # ports:
+    #   - 5173:5173
     container_name: todo-front-dev
 
   nginx:
@@ -23,8 +23,8 @@ services:
 
   mongo:
     image: mongo
-    ports:
-      - 3456:27017
+    # ports:
+    #   - 3456:27017
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
@@ -35,8 +35,8 @@ services:
   redis:
     command: ["redis-server", "--appendonly", "yes"]
     image: redis
-    ports:
-      - 6379:6379
+    # ports:
+    #   - 6379:6379
     volumes:
       - redis_data:/data
     restart: unless-stopped
@@ -45,14 +45,14 @@ services:
     image: todo-backend-dev
     build:
       context: ./todo-backend/
-      dockerfile: ./dev.Dockerfile
+      dockerfile: ./dev.Dockerfile # in todo-backend/
     environment:
       - REDIS_URL=redis://redis:6379
       - MONGO_URL=mongodb://the_username:the_password@mongo:27017/the_database
     volumes:
       - ./todo-backend/:/usr/src/app
-    ports:
-      - 3000:3000
+    # ports:
+    #   - 3000:3000
     depends_on:
       - redis
       - mongo
